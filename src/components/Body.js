@@ -2,6 +2,8 @@ import React, {useEffect, useMemo} from 'react';
 import RestaurantCard from './RestaurantCard';
 import {useState} from 'react';
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
+
 
 const SWIGGY_API = 'https://corsproxy.io/?https://namastedev.com/api/v1/listRestaurants';
 const CDN_URL =
@@ -67,9 +69,11 @@ const Body = () => {
             </div>
             <div className="restaurant-container">
                 {filteredRestaurant.map((restaurant) => (
-                    <RestaurantCard
+                    <Link to={"/restaurants/"+ restaurant?.info?.id}>
+                        <RestaurantCard
                         key={restaurant?.info?.id}
                         resData={restaurant}/>
+                    </Link>
                 ))}
             </div>
         </div>
