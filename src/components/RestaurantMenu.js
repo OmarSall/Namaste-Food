@@ -1,27 +1,11 @@
-import {useEffect, useState} from "react";
 import Shimmer from "./Shimmer";
 import {useParams} from "react-router-dom";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
-    const [resInfo, setResInfo] = useState(null);
+    const { resId} = useParams();
 
-    const {resId} = useParams();
-
-    useEffect(() => {
-        fetchMenu();
-    }, []);
-
-    const fetchMenu = async () => {
-        const data = await fetch(
-            "https://corsproxy.io/?https://namastedev.com/api/v1/listRestaurants"
-        );
-        const json = await data.json();
-        const restList = json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-        const restListMock = json
-
-        console.log(restListMock);
-        setResInfo(restList[0]);
-    }
+    const resInfo = useRestaurantMenu(resId);
 
     const {
         name,

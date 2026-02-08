@@ -3,7 +3,7 @@ import RestaurantCard from './RestaurantCard';
 import {useState} from 'react';
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
-
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const SWIGGY_API = 'https://corsproxy.io/?https://namastedev.com/api/v1/listRestaurants';
 const CDN_URL =
@@ -26,6 +26,16 @@ const Body = () => {
         console.log(restList);
         setRestaurantsList(json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
         setFilteredRestaurant(json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    }
+
+    const onlineStatus = useOnlineStatus();
+
+    if (onlineStatus === false) {
+        return (
+            <>
+                <h1>Looks like you're offline. Please check your internet connection.</h1>
+            </>
+        )
     }
 
     if (restaurantsList.length === 0) {
