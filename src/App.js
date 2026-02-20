@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import Header from './components/Header';
 import Body from './components/Body';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
-import About from './components/About';
 import Contact from './components/Contact';
 import Error from './components/Error';
 import RestaurantMenu from './components/RestaurantMenu';
@@ -13,9 +12,11 @@ const About = lazy(() => import('./components/About'));
 
 const AppLayout = () => {
   return (
-    <div className="app">
+    <div className="min-h-screen bg-slate-50 text-slate-900">
       <Header />
-      <Outlet />
+      <main className="mx-auto w-full max-w-6xl px-4 py-6">
+        <Outlet />
+      </main>
     </div>
   );
 };

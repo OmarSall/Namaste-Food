@@ -26,25 +26,25 @@ class UserClass extends Component {
     });
 
     this.timer = setInterval(() => {
-        console.log("Namaste Timer")
-    },1000)
+      console.log('Namaste Timer');
+    }, 1000);
 
     console.log(json);
   }
 
   // useEffect older version
-    componentDidUpdate(prevProps, prevState) {
-      if (
-          this.state.count !== prevState.count ||
-          this.state.count !== prevState.count
-      ) {
-          // code
-      }
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      this.state.count !== prevState.count ||
+      this.state.count !== prevState.count
+    ) {
+      // code
     }
+  }
 
   componentWillUnmount() {
-      clearInterval(this.timer);
-      console.log('Child Component Did Unmount');
+    clearInterval(this.timer);
+    console.log('Child Component Did Unmount');
   }
 
   render() {
@@ -56,7 +56,7 @@ class UserClass extends Component {
 
     return (
       <div className="user-card">
-          <img src={avatar_url} className="user-card__avatar" />
+        <img src={avatar_url} className="user-card__avatar" />
         <h1>Count: {count}</h1>
         <button
           onClick={() => {

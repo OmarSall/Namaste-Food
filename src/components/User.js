@@ -4,7 +4,7 @@ const User = ({ name }) => {
   const [count, setCount] = useState(0);
   const [count2, setCount2] = useState(1);
   return (
-    <div className="user-card">
+    <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
       <h1>Count = {count}</h1>
       <h1>Count2 = {count2}</h1>
       <h2>Name: {name}</h2>
