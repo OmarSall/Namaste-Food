@@ -1,9 +1,10 @@
-import React, { useEffect, useMemo } from 'react';
-import RestaurantCard, {withPromotedLabel} from './RestaurantCard';
+import React, { useContext, useEffect, useMemo } from 'react';
+import RestaurantCard from './RestaurantCard';
 import { useState } from 'react';
 import Shimmer from './Shimmer';
 import { Link } from 'react-router-dom';
 import useOnlineStatus from '../utils/useOnlineStatus';
+import userContext from '../utils/UserContext';
 
 const SWIGGY_API =
   'https://corsproxy.io/?https://namastedev.com/api/v1/listRestaurants';
@@ -51,6 +52,8 @@ const Body = () => {
     );
   }
 
+  const { loggedInUser, setUserName } = useContext(userContext);
+
   if (restaurantsList.length === 0) {
     return <Shimmer />;
   }
@@ -80,6 +83,14 @@ const Body = () => {
           >
             Search
           </button>
+          <div>
+            <label>User Name: </label>
+            <input
+              className="border border-black p-2"
+              onChange={(e) => setUserName(e.target.value)}
+              value={loggedInUser}
+            />
+          </div>
         </div>
         <button
           className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-800 hover:bg-slate-50 active:bg-slate-100"
@@ -100,6 +111,7 @@ const Body = () => {
             to={'/restaurants/' + restaurant?.info?.id}
             className="block"
           >
+            {/* {restaurant.data.promoted ? <RestaurantCardPromoted resData={restaurant}/> : <RestaurantCard resData={restaurant} />}*/}
             <RestaurantCard resData={restaurant} />
           </Link>
         ))}

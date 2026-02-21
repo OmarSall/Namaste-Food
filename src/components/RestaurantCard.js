@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import UserContext from '../utils/UserContext';
 
 const CDN_URL =
   'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/';
@@ -16,6 +17,8 @@ const RestaurantCard = ({ resData }) => {
     sla,
     cloudinaryImageId,
   } = info;
+
+  const { loggedInUser } = useContext(UserContext);
 
   return (
     <div className="group h-full overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
@@ -51,22 +54,23 @@ const RestaurantCard = ({ resData }) => {
 
         <div className="mt-2 text-sm font-medium text-slate-800">
           {costForTwo}
+          {loggedInUser}
         </div>
       </div>
     </div>
   );
 };
 
-export const withPromotedLabel = (RestaurantCard) => {
-    return () => {
-        return (
-            <div>
-                <label>Promoted</label>
-                <RestaurantCard />
-            </div>
-        )
-    }
-}
+// export const withPromotedLabel = (RestaurantCard) => {
+//     return (props) => {
+//         return (
+//             <div>
+//                 <label>Promoted</label>
+//                 <RestaurantCard {...props}/>
+//             </div>
+//         )
+//     }
+// }
 
 export default RestaurantCard;
 
