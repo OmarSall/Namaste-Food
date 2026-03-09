@@ -1,20 +1,25 @@
-import {useEffect, useState} from "react";
-import { MENU_API } from "./constants";
+import { useEffect, useState } from 'react';
+import { LOCAL_MENUS, LOCAL_RESTAURANTS } from './localData';
 
 const useRestaurantMenu = (resId) => {
-    const [resInfo, setResInfo] = useState(null);
+  const [resInfo, setResInfo] = useState(null);
 
-    useEffect(() => {
-        fetchData();
-    }, [])
+  useEffect(() => {
+    const restaurant = LOCAL_RESTAURANTS.find((res) => res?.info?.id === resId);
+    const menu = LOCAL_MENUS[resId] || { itemCards: [] };
 
-    const fetchData = async () => {
-        const data = await fetch(MENU_API + resId);
-        const json = await data.json();
-        const restList = json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-        setResInfo(restList[0]);
+    if (!restaurant) {
+      setResInfo(null);
+      return;
     }
 
-    return resInfo;
-}
+    setResInfo({
+      info: restaurant.info,
+      itemCards: menu.itemCards,
+    });
+  }, [resId]);
+
+  return resInfo;
+};
+
 export default useRestaurantMenu;
