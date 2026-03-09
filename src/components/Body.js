@@ -1,22 +1,16 @@
-import React, { useContext, useEffect, useMemo } from 'react';
+import React, { useContext, useEffect } from 'react';
 import RestaurantCard from './RestaurantCard';
 import { useState } from 'react';
 import Shimmer from './Shimmer';
 import { Link } from 'react-router-dom';
 import useOnlineStatus from '../utils/useOnlineStatus';
 import userContext from '../utils/UserContext';
-
-const SWIGGY_API =
-  'https://corsproxy.io/?https://namastedev.com/api/v1/listRestaurants';
-const CDN_URL =
-  'https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/';
+import { LOCAL_RESTAURANTS } from '../utils/localData';
 
 const Body = () => {
   const [restaurantsList, setRestaurantsList] = useState([]);
   const [searchText, setSearchText] = useState('');
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
-
-  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
   useEffect(() => {
     console.log('useEffect fired');
@@ -24,20 +18,8 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(SWIGGY_API);
-    const json = await data.json();
-    const restList =
-      json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants;
-    console.log(restList);
-    setRestaurantsList(
-      json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants,
-    );
-    setFilteredRestaurant(
-      json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants,
-    );
+    setRestaurantsList(LOCAL_RESTAURANTS);
+    setFilteredRestaurant(LOCAL_RESTAURANTS);
   };
 
   const onlineStatus = useOnlineStatus();
