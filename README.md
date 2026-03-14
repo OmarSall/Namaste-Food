@@ -31,4 +31,23 @@ Header:
 - < HTML (new API data)>
 - component did update
 
+# Redux Toolkit
+ - install redux @reduxjs/toolkit and @react-redux
+ - build our store
+ - connect our store to our app
+ - slice (cartSlice)
+ - dispatch(action)
+ - Selector
 
+# Types of testing (developer)
+ - Unit Testing
+ - Integration Testing
+ - End to End Testing - e2e testing
+
+# Setting up Testing in our app
+ - Install React Testing Library
+ - Installed jest
+ - Installed Babel dependencies
+ - Configure Babel
+ - Configure Parcel Config file to disable default babel transpilation
+ - Jest configuration
