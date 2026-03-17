@@ -6,7 +6,8 @@
     "start": "parcel index.html",
     "build": "parcel build index.html",
     "test": "jest",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "watch-test": "jest --watch"
   },
   "author": "Omar Salloum",
   "license": "ISC",

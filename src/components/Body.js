@@ -45,6 +45,7 @@ const Body = () => {
         <div className="flex w-full flex-col gap-2 sm:flex-row sm:items-center">
           <input
             type="text"
+            data-testid="search-input"
             className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none ring-0 focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-200 sm:max-w-xs"
             placeholder="Search..."
             value={searchText}

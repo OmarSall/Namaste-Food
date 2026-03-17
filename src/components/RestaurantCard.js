@@ -7,7 +7,8 @@ const CDN_URL =
 const FALLBACK_IMAGE =
   'https://images.unsplash.com/photo-1550547660-d9450f859349';
 
-const RestaurantCard = ({ resData }) => {
+const RestaurantCard = (props) => {
+  const { resData } = props;
   const info = resData?.info || {};
   const {
     name,
@@ -21,7 +22,7 @@ const RestaurantCard = ({ resData }) => {
   const { loggedInUser } = useContext(UserContext);
 
   return (
-    <div className="group h-full overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+    <div data-testid="resCard" className="group h-full overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
       <img
         className="h-40 w-full object-cover"
         alt={name || 'restaurant-logo'}

@@ -1,0 +1,16 @@
+{
+  "info": {
+    "id": "101",
+    "name": "KFC",
+    "cuisines": [
+      "Burgers",
+      "Fast Food"
+    ],
+    "avgRating": 3.8,
+    "costForTwo": "₹400 for two",
+    "sla": {
+      "deliveryTime": 36
+    },
+    "cloudinaryImageId": ""
+  }
+}

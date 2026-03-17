@@ -3,18 +3,36 @@ import {render,screen} from "@testing-library/react";
 import React from "react";
 import "@testing-library/jest-dom"
 
-test("Should load contact us component", () => {
-    render(<Contact />);
+describe("Contact Us Page Test Case", () => {
+    beforeAll(() => {
+        console.log("Before All");
+    })
 
-    const heading = screen.getByRole("heading");
+    beforeEach(() => {
+        console.log("Before Each");
+    })
 
-    // Assertion
-    expect(heading).toBeInTheDocument();
-});
+    afterAll(() => {
+        console.log("After All");
+    })
 
-test("Should load input name inside Contact component", () => {
-    render(<Contact />);
-    // Querying
-    const inputName = screen.getByPlaceholderText("name")
-    expect(inputName).toBeInTheDocument();
+    afterEach(() => {
+        console.log("After Each");
+    })
+
+    it("Should load contact us component", () => {
+        render(<Contact />);
+
+        const heading = screen.getByRole("heading");
+
+        // Assertion
+        expect(heading).toBeInTheDocument();
+    });
+
+    it("Should load input name inside Contact component", () => {
+        render(<Contact />);
+        // Querying
+        const inputName = screen.getByPlaceholderText("name")
+        expect(inputName).toBeInTheDocument();
+    })
 })
